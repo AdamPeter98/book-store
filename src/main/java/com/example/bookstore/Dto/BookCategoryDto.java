@@ -1,10 +1,18 @@
 package com.example.bookstore.Dto;
 
+import java.util.List;
+
 public class BookCategoryDto {
 
     private String categoryName;
+    private List<BookWithoutCategoryDto> bookDtos;
 
-    public BookCategoryDto(String categoryName) {
+
+
+    public BookCategoryDto() {
+    }
+
+    public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
 
@@ -12,10 +20,11 @@ public class BookCategoryDto {
         return categoryName;
     }
 
-    public BookCategoryDto() {
+    public List<BookWithoutCategoryDto> getBookDtos() {
+        return bookDtos;
     }
 
-    public void setCategoryName(String categoryName) {
-        this.categoryName = categoryName;
+    public void setBookDtos(List<BookWithoutCategoryDto> bookDtos) {
+        this.bookDtos = bookDtos;
     }
 }

@@ -1,6 +1,5 @@
 package com.example.bookstore.Facade.Impl;
 
-import com.example.bookstore.Converter.Impl.BookCategoryToBookCategoryDtoPopualtor;
 import com.example.bookstore.Converter.Impl.BookToBookDtoPopulator;
 import com.example.bookstore.Dto.BookDto;
 import com.example.bookstore.Entity.Book;
@@ -40,6 +39,19 @@ public class BookFacadeImpl implements BookFacade {
         Book book = bookService.getBook(id);
         BookDto bookDto = new BookDto();
         bookToBookDtoPopulator.populate(book,bookDto);
+        return bookDto;
+    }
+
+    @Override
+    public List<BookDto> getBookDtoByCategoryId(Long id) {
+        List<Book> tempBooks = bookService.getAllBooksByCategoryId(id);
+        List<BookDto> bookDto = new ArrayList<>();
+
+        tempBooks.forEach(book -> {
+            BookDto tempBookDto = new BookDto();
+            bookToBookDtoPopulator.populate(book,tempBookDto);
+            bookDto.add(tempBookDto);
+        });
         return bookDto;
     }
 }

@@ -20,6 +20,7 @@ public class BookCategoryServiceImpl implements BookCategoryService {
 
     @Override
     public BookCategory getBook(Long id) {
+
         return bookCategoryDao.getOne(id);
     }
 }

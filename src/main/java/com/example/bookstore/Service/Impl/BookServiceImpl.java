@@ -6,7 +6,9 @@ import com.example.bookstore.Service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
+
 @Component
 public class BookServiceImpl implements BookService {
 
@@ -21,5 +23,17 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book getBook(Long id) {
         return bookDao.getOne(id);
+    }
+
+    @Override
+    public List<Book> getAllBooksByCategoryId(Long id) {
+        List<Book> allBooks = bookDao.findAll();
+        List<Book> specIdBooks = new ArrayList<>();
+        allBooks.forEach(book -> {
+            if (book.getBookCategory().getId() == id) {
+                specIdBooks.add(book);
+            }
+        });
+        return specIdBooks;
     }
 }

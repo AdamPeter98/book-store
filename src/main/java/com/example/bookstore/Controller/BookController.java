@@ -9,15 +9,16 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class BookController {
 
     @Autowired
     private BookFacadeImpl bookFacade;
 
     @GetMapping("/books")
-    @CrossOrigin(origins = "http://localhost:4200")
     public List<BookDto> getBooks(){return bookFacade.getBookDtos();}
 
-    @GetMapping("/book/{id}")
+    @GetMapping("/books/{id}")
     public BookDto getBooks(@PathVariable Long id){return bookFacade.getBookDto(id);}
+
 }

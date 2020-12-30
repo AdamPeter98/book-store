@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "tbl_category")
@@ -22,5 +22,5 @@ public class BookCategory {
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "bookCategory")
-    private Set<Book> book;
+    private List<Book> book;
 }

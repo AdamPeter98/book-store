@@ -7,4 +7,5 @@ import java.util.List;
 public interface BookFacade {
     List<BookDto> getBookDtos();
     BookDto getBookDto(Long id);
+    List<BookDto> getBookDtoByCategoryId(Long id);
 }
