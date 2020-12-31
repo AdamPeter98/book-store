@@ -36,4 +36,9 @@ public class BookServiceImpl implements BookService {
         });
         return specIdBooks;
     }
+
+    @Override
+    public List<Book> getAllBooksByName(String name) {
+        return bookDao.findByNameContaining(name);
+    }
 }

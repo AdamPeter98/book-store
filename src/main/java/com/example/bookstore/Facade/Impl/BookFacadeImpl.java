@@ -1,7 +1,9 @@
 package com.example.bookstore.Facade.Impl;
 
 import com.example.bookstore.Converter.Impl.BookToBookDtoPopulator;
+import com.example.bookstore.Converter.Impl.BookWithoutCategoryDtoPopulator;
 import com.example.bookstore.Dto.BookDto;
+import com.example.bookstore.Dto.BookWithoutCategoryDto;
 import com.example.bookstore.Entity.Book;
 import com.example.bookstore.Facade.BookFacade;
 import com.example.bookstore.Service.BookService;
@@ -19,6 +21,9 @@ public class BookFacadeImpl implements BookFacade {
 
     @Autowired
     private BookToBookDtoPopulator bookToBookDtoPopulator;
+
+    @Autowired
+    private BookWithoutCategoryDtoPopulator bookWithoutCategoryDtoPopulator;
 
     @Override
     public List<BookDto> getBookDtos() {
@@ -50,6 +55,19 @@ public class BookFacadeImpl implements BookFacade {
         tempBooks.forEach(book -> {
             BookDto tempBookDto = new BookDto();
             bookToBookDtoPopulator.populate(book,tempBookDto);
+            bookDto.add(tempBookDto);
+        });
+        return bookDto;
+    }
+
+    @Override
+    public List<BookWithoutCategoryDto> getBookDtoByName(String name) {
+        List<Book> tempBooks = bookService.getAllBooksByName(name);
+        List<BookWithoutCategoryDto> bookDto = new ArrayList<>();
+
+        tempBooks.forEach(book -> {
+            BookWithoutCategoryDto tempBookDto = new BookWithoutCategoryDto();
+            bookWithoutCategoryDtoPopulator.populate(book,tempBookDto);
             bookDto.add(tempBookDto);
         });
         return bookDto;
