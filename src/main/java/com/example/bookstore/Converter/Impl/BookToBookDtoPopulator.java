@@ -22,6 +22,7 @@ public class BookToBookDtoPopulator implements Populator<Book, BookDto> {
 
         bookToBookDtoPopulator.populate(bookCategory,bookCategoryDto);
 
+        target.setId(source.getId());
         target.setName(source.getName());
         target.setActive(source.isActive());
         target.setBookCategoryDto(bookCategoryDto);

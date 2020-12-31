@@ -1,10 +1,10 @@
 package com.example.bookstore.Dto;
 
-import com.example.bookstore.Entity.BookCategory;
-
 import java.math.BigDecimal;
 
 public class BookDto {
+
+    private Long id;
 
     private String name;
 
@@ -22,7 +22,6 @@ public class BookDto {
 
     public BookDto() {
     }
-
 
 
     public String getName() {
@@ -79,5 +78,13 @@ public class BookDto {
 
     public void setBookCategoryDto(BookCategoryDto bookCategoryDto) {
         this.bookCategoryDto = bookCategoryDto;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

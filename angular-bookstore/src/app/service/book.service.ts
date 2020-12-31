@@ -16,19 +16,24 @@ export class BookService {
   constructor(private HttpClient: HttpClient) { }
 
   getBooks(theCategoryId : number):Observable<Book[]>{
-    const searchUrl = `${this.baseUrl}/search/category/${theCategoryId}`
+    const searchUrl = `${this.baseUrl}/search/category/${theCategoryId}`;
     console.log(searchUrl);
-    return this.getBooksList(searchUrl)
+    return this.getBooksList(searchUrl);
 
   }
 
   
 
   searchBooks(keyword : string):Observable<Book[]>{
-    const searchUrl = `${this.baseUrl}/search/${keyword}`
-    console.log(searchUrl);
+    const searchUrl = `${this.baseUrl}/search/${keyword}`;
     return this.getBooksList(searchUrl);
 
+  }
+
+  getBook(bookId: number):Observable<Book>{
+    const bookDetailsUrl = `${this.baseUrl}/${bookId}`; 
+    console.log(bookDetailsUrl);
+    return this.HttpClient.get<Book>(bookDetailsUrl);
   }
 
   /**

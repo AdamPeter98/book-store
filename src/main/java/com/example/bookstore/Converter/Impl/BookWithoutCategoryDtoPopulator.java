@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 public class BookWithoutCategoryDtoPopulator implements Populator<Book, BookWithoutCategoryDto> {
     @Override
     public void populate(Book source, BookWithoutCategoryDto target) {
+        target.setId(source.getId());
         target.setName(source.getName());
         target.setImageUrl(source.getImageUrl());
         target.setDescription(source.getDescription());

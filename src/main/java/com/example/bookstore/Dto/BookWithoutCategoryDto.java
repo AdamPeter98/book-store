@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 
 public class BookWithoutCategoryDto {
 
+    private Long id;
+
     private String name;
 
     private String description;
@@ -66,5 +68,13 @@ public class BookWithoutCategoryDto {
 
     public void setUnitsInStock(int unitsInStock) {
         this.unitsInStock = unitsInStock;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

@@ -40,10 +40,10 @@ public class BookFacadeImpl implements BookFacade {
     }
 
     @Override
-    public BookDto getBookDto(Long id) {
+    public BookWithoutCategoryDto getBookDto(Long id) {
         Book book = bookService.getBook(id);
-        BookDto bookDto = new BookDto();
-        bookToBookDtoPopulator.populate(book,bookDto);
+        BookWithoutCategoryDto bookDto = new BookWithoutCategoryDto();
+        bookWithoutCategoryDtoPopulator.populate(book,bookDto);
         return bookDto;
     }
 

@@ -8,27 +8,30 @@ import { BookListComponent } from './components/book-list/book-list.component';
 import { BookService } from './service/book.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchComponent } from './components/search/search.component';
+import { BookDetailsComponent } from './components/book-details/book-details.component';
 
 
 const routes: Routes = [
+  {
+    path: 'books/:id', component: BookDetailsComponent
+  },
+  {
+    path: 'books', component: BookListComponent
+  },
+  {
+    path: 'category/:id', component: BookListComponent
+  },
+  {
+    path: 'search/:keyword', component: BookListComponent
+  },
 
   {
-    path: 'books',component:BookListComponent
-  },
-  {
-    path: 'category/:id',component:BookListComponent
-  },
-  {
-    path: 'search/:keyword',component:BookListComponent
-  },
-  
-  {
-    path: '',redirectTo: '/books',pathMatch: 'full'
+    path: '', redirectTo: '/books', pathMatch: 'full'
   },
   {
     path: '**', component: PageNotFoundComponent
   },
-  
+
 
 ];
 
@@ -36,7 +39,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     BookListComponent,
-    SearchComponent
+    SearchComponent,
+    BookDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +48,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes)
   ],
   providers: [
-    BookService 
+    BookService
 
   ],
   bootstrap: [AppComponent]

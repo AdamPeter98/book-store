@@ -20,7 +20,7 @@ public class BookController {
     public List<BookDto> getBooks(){return bookFacade.getBookDtos();}
 
     @GetMapping("/{id}")
-    public BookDto getBooks(@PathVariable Long id){return bookFacade.getBookDto(id);}
+    public BookWithoutCategoryDto getBooks(@PathVariable Long id){return bookFacade.getBookDto(id);}
 
 
     @GetMapping("/search/{name}")
