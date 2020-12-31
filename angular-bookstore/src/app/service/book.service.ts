@@ -11,18 +11,31 @@ export class BookService {
 
   private baseUrl = "http://localhost:8080/api/v1/books";
 
-  private searchUrl: any;
+  
 
   constructor(private HttpClient: HttpClient) { }
 
   getBooks(theCategoryId : number):Observable<Book[]>{
-    this.searchUrl = `${this.baseUrl}/search/category/${theCategoryId}`
-
-    console.log(this.searchUrl);
-
-    return this.HttpClient.get<Book[]>(this.searchUrl)
+    const searchUrl = `${this.baseUrl}/search/category/${theCategoryId}`
+    console.log(searchUrl);
+    return this.getBooksList(searchUrl)
 
   }
+
   
+
+  searchBooks(keyword : string):Observable<Book[]>{
+    const searchUrl = `${this.baseUrl}/search/${keyword}`
+    console.log(searchUrl);
+    return this.getBooksList(searchUrl);
+
+  }
+
+  /**
+   * 
+   */
+  private getBooksList(searchUrl : string): Observable<Book[]> {
+    return this.HttpClient.get<Book[]>(searchUrl);
+  }
 }
 
