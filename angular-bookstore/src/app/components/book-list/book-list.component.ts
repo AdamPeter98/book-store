@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Book } from 'src/app/common/book';
+import { CartItem } from 'src/app/common/cart-item';
 import { BookService } from 'src/app/service/book.service';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-book-list',
@@ -18,7 +20,8 @@ export class BookListComponent implements OnInit {
   searchMode: boolean | undefined;
 
   constructor(private _bookService: BookService,
-    private _activatedRoute: ActivatedRoute
+    private _activatedRoute: ActivatedRoute,
+    private _cartService: CartService
   ) {}
 
   ngOnInit(): void {
@@ -65,6 +68,13 @@ export class BookListComponent implements OnInit {
         this.books = data;
       }
     )
+  }
+
+
+  addToCart(book: Book){
+    console.log(`book name: ${book.name}, and price : ${book.unitPrice}`);
+    const cartItem = new CartItem(book);
+    this._cartService.addToCart(cartItem);
   }
 
 }

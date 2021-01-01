@@ -9,6 +9,7 @@ import { BookService } from './service/book.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { SearchComponent } from './components/search/search.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
     AppComponent,
     BookListComponent,
     SearchComponent,
-    BookDetailsComponent
+    BookDetailsComponent,
+    CartStatusComponent
   ],
   imports: [
     BrowserModule,
