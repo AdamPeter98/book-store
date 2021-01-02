@@ -10,9 +10,13 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { SearchComponent } from './components/search/search.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 
 const routes: Routes = [
+  {
+    path: 'cart-details', component: CartDetailsComponent
+  },
   {
     path: 'books/:id', component: BookDetailsComponent
   },
@@ -42,7 +46,8 @@ const routes: Routes = [
     BookListComponent,
     SearchComponent,
     BookDetailsComponent,
-    CartStatusComponent
+    CartStatusComponent,
+    CartDetailsComponent
   ],
   imports: [
     BrowserModule,
