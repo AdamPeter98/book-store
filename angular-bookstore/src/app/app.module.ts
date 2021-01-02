@@ -11,9 +11,19 @@ import { SearchComponent } from './components/search/search.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { UserRegistrationService } from './service/user-registration.service';
+import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegistrationComponent
+  },
   {
     path: 'cart-details', component: CartDetailsComponent
   },
@@ -47,15 +57,19 @@ const routes: Routes = [
     SearchComponent,
     BookDetailsComponent,
     CartStatusComponent,
-    CartDetailsComponent
+    CartDetailsComponent,
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    FormsModule
   ],
   providers: [
-    BookService
+    BookService,
+    UserRegistrationService
 
   ],
   bootstrap: [AppComponent]
